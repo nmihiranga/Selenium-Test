@@ -18,20 +18,18 @@ public class seleniumTest {
 
     WebDriver driver = new ChromeDriver();
 
+
     @BeforeTest
     void setup(){
         System.setProperty("webdriver.chrome.driver", "D:\\IntelliJ\\chromedriver.exe");
-
-        driver.get("https://www.ebay.com/");
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-
-
     }
 
     //xPath
     @Test
     void test1(){
+        driver.get("https://www.ebay.com/");
         driver.findElement(By.id("gh-ac")).sendKeys("pixel 7");
         driver.findElement(By.xpath("//*[@id=\"gh-btn\"]")).click();
         driver.findElement(By.xpath("//*[@id=\"x-refine__group_1__0\"]/ul/li[1]/div/a/div/span/input")).click();
@@ -43,10 +41,15 @@ public class seleniumTest {
     void test2(){
         driver.navigate().to("https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiSrIa6m_uEAxV2RmwGHTerAGMQPAgJ");
         driver.navigate().back();
-        driver.quit();
+        //driver.quit();
     }
 
-
+    //Alert handling
+    @Test
+    void test3(){
+        driver.get("https://demoqa.com/alerts");
+        driver.findElement(By.id("alertButton")).click();
+    }
 
 
 }
