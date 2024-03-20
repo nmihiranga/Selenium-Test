@@ -47,11 +47,16 @@ public class seleniumTest {
 
     //Alert handling
     @Test
-    void test3(){
+    void test3() throws InterruptedException {
         driver.get("https://demoqa.com/alerts");
         driver.findElement(By.id("alertButton")).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
+
+        driver.findElement(By.id("promtButton")).click();
+        alert.sendKeys("Hello");
+        Thread.sleep(4000);
+        alert.dismiss();
     }
 
 
