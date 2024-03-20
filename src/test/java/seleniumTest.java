@@ -1,3 +1,4 @@
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,6 +50,8 @@ public class seleniumTest {
     void test3(){
         driver.get("https://demoqa.com/alerts");
         driver.findElement(By.id("alertButton")).click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
     }
 
 
