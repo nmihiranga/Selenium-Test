@@ -1,10 +1,18 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import java.time.Duration;
+
+import static org.openqa.selenium.support.ui.ExpectedCondition.*;
+
 
 public class seleniumTest {
 
@@ -16,8 +24,12 @@ public class seleniumTest {
 
         driver.get("https://www.ebay.com/");
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+
+
     }
 
+    //xPath
     @Test
     void test1(){
         driver.findElement(By.id("gh-ac")).sendKeys("pixel 7");
@@ -25,10 +37,16 @@ public class seleniumTest {
         driver.findElement(By.xpath("//*[@id=\"x-refine__group_1__0\"]/ul/li[1]/div/a/div/span/input")).click();
 
     }
+
+    //Navigate
     @Test
     void test2(){
         driver.navigate().to("https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiSrIa6m_uEAxV2RmwGHTerAGMQPAgJ");
         driver.navigate().back();
         driver.quit();
     }
+
+
+
+
 }
