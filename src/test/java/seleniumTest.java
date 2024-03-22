@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -67,5 +68,19 @@ public class seleniumTest {
         driver.get("https://www.wikipedia.org/");
         String actualTitle = driver.getTitle();
         Assert.assertEquals(expectedTitle, actualTitle);
+    }
+
+    //Drag and drop
+    @Test
+    void test5() throws InterruptedException {
+        driver.get("https://jqueryui.com/droppable/");
+        driver.switchTo().frame(0);
+        WebElement sourceElement = driver.findElement(By.id("draggable"));
+        WebElement targetElement = driver.findElement(By.id("droppable"));
+        Actions action = new Actions(driver);
+        Thread.sleep(3000);
+        action.dragAndDrop(sourceElement, targetElement).build().perform();
+        //action.clickAndHold(sourceElement).moveToElement(targetElement).release().build().perform();
+        Thread.sleep(3000);
     }
 }
